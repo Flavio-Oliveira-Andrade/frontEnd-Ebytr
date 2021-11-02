@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
       <Header/>
         <p>
-          Edit  and save to reload.
+          Edit and save and write to Task
         </p>
         <Todo/>
 
