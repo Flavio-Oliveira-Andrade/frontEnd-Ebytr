@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import Todo from './components/Todo';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <p>
           Edit  and save to reload.
         </p>
+        <Todo/>
 
       </header>
     </div>
