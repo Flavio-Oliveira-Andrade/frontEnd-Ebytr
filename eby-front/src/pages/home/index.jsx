@@ -1,5 +1,8 @@
 import React,{useState, useEffect} from 'react';
 
+import {Container, ContentTitle,Title, BtnSucces,BtnAction,BtnAntProxPrim,Table,
+  BtnAntProx, TitleUser} from '../../styles/customAdm'
+
 const Home = () => {
 
   const [data, setData] = useState([])
@@ -27,6 +30,7 @@ const Home = () => {
         month: dateView.month - 1,
       })
     }
+
   }
 
   const Proximo = async (state) => {
@@ -59,6 +63,11 @@ const Home = () => {
         "notas": "escovar os cabelos",
         "date":"07/11/2021"
       },
+      {
+        "id":4,
+        "notas": "escovar os cabelos do cachorro",
+        "date":"07/11/2021"
+      },
     ];
     setData(notas)
   }
@@ -68,14 +77,21 @@ const Home = () => {
   },[])
 
   return(
-    <div>
-      <hi>Listar Notas</hi>
-      <p>Ano atual:{dateView.year}</p>
-      <p>Mes:{dateView.month}</p>
-      <button onClick={()=> anterior()}>Anterior</button>
-      <button onClick={()=> Proximo()}>Proximo</button>
+    <Container>
+      <ContentTitle>
+      <Title>Listar Notas</Title>
+      <TitleUser>Notas do Flavio</TitleUser>
+      <BtnAction>
+      <BtnSucces>Cadastrar</BtnSucces>
+      </BtnAction>
+      </ContentTitle>
+      <BtnAntProx>
+      <BtnAntProxPrim onClick={()=> anterior()}>Anterior</BtnAntProxPrim>
+      <span>{dateView.year} / {dateView.month <10 ? "0"+dateView.month:dateView.month }</span>
+      <BtnAntProxPrim onClick={()=> Proximo()}>Proximo</BtnAntProxPrim>
+      </BtnAntProx>
 
-      <table>
+      <Table>
         <thead>
           <tr>
             <th>Id</th>
@@ -92,8 +108,8 @@ const Home = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </Container>
   )
 }
 

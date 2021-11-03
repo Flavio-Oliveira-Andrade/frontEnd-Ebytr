@@ -3,10 +3,6 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from './pages/home/index'
 
-import Header from './components/Header';
-import Todo from './components/Todo';
-import './App.css';
-
 function App() {
   return (
     <div className="App">
