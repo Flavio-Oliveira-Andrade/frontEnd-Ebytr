@@ -1,4 +1,8 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Home from './pages/home/index'
+
 import Header from './components/Header';
 import Todo from './components/Todo';
 import './App.css';
@@ -6,14 +10,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      <Header/>
-        <p>
-          Edit and save and write to Task
-        </p>
-        <Todo/>
-
-      </header>
+     <Router>
+      <Switch>
+        <Route path="/" component={Home} />
+      </Switch>
+     </Router>
     </div>
   );
 }

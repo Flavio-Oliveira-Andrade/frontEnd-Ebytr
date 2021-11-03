@@ -1,0 +1,100 @@
+import React,{useState, useEffect} from 'react';
+
+const Home = () => {
+
+  const [data, setData] = useState([])
+
+  let dateCurrent = new Date();
+  const year = dateCurrent.getFullYear();
+  const month = dateCurrent.getMonth()+1
+  const day = dateCurrent.getDay()
+  console.log(`ano /${year} do mes /${month} dia/${day}`);
+
+  const [dateView, setDataView ] = useState({
+    year,
+    month,
+  })
+
+  const anterior = async (state) => {
+    if(dateView.month === 1) {
+      setDataView({
+        year: dateView.year-1,
+        month: 12
+      })
+    }else{
+      setDataView({
+        year: dateView.year,
+        month: dateView.month - 1,
+      })
+    }
+  }
+
+  const Proximo = async (state) => {
+    if(dateView.month === 12) {
+      setDataView({
+        year: dateView.year+1,
+        month: 1
+      })
+    }else{
+      setDataView({
+        year: dateView.year,
+        month: dateView.month  + 1,
+      })
+    }
+  }
+  const listarNotas = async (data) => {
+    let notas = [
+      {
+        "id":1,
+        "notas": "escovar os dentes",
+        "date":"07/11/2021"
+      },
+      {
+        "id":2,
+        "notas": "estdar os conteudos",
+        "date":"07/11/2021"
+      },
+      {
+        "id":3,
+        "notas": "escovar os cabelos",
+        "date":"07/11/2021"
+      },
+    ];
+    setData(notas)
+  }
+
+  useEffect(()=>{
+    listarNotas()
+  },[])
+
+  return(
+    <div>
+      <hi>Listar Notas</hi>
+      <p>Ano atual:{dateView.year}</p>
+      <p>Mes:{dateView.month}</p>
+      <button onClick={()=> anterior()}>Anterior</button>
+      <button onClick={()=> Proximo()}>Proximo</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Notas</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map(nota => (
+            <tr key={nota.id}>
+              <td>{nota.id}</td>
+              <td>{nota.notas}</td>
+              <td>{nota.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+export default Home
