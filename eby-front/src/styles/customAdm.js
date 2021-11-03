@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
- export const Container = styled.section`
+export const Container = styled.section`
   margin: 0px auto;
   width: 960px;
   max-width: 960px;
@@ -15,14 +15,12 @@ export const BtnAction = styled.section`
   margin: 20px;
 `;
 
-
 export const Title = styled.h1`
   font-size: 23px;
   font-family: sans-serif;;
   margin: 10px, 15px;
   color: #1d1e1e
 `;
-
 
 export const TitleUser = styled.h1`
   font-size: 16px;
@@ -38,7 +36,6 @@ export const BtnAntProx = styled.section`
   border-top: solid 1px #c1c1c1;
   padding 10px 17px
 `;
-
 
 export const BtnSucces = styled.button`
   background-color: #fff;
@@ -82,4 +79,3 @@ export const Table = styled.table`
     padding: 8px;
   }
 `;
-

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Container, ContentTitle, Title, BtnSucces, BtnAction, BtnAntProxPrim, Table,
@@ -12,7 +13,7 @@ const Home = () => {
   const year = dateCurrent.getFullYear();
   const month = dateCurrent.getMonth() + 1;
   const day = dateCurrent.getDay();
-  console.table(`ano /${year} do mes /${month} dia/${day}`);
+  console.log(`ano /${year} do mes /${month} dia/${day}`);
 
   const [dateView, setDataView] = useState({
     year,
@@ -82,7 +83,9 @@ const Home = () => {
         <Title>Listar Notas</Title>
         <TitleUser>Notas do Flavio</TitleUser>
         <BtnAction>
-          <BtnSucces>Cadastrar</BtnSucces>
+          <Link to="/cadastar">
+            <BtnSucces>Cadastrar</BtnSucces>
+          </Link>
         </BtnAction>
       </ContentTitle>
       <BtnAntProx>

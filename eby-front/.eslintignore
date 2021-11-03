@@ -2,3 +2,4 @@ src/App.test.js
 src/serviceWorker.js
 cypress/*
 src/index.js
+src/app.js
