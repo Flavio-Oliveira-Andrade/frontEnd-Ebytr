@@ -12,14 +12,14 @@ const Home = () => {
   const year = dateCurrent.getFullYear();
   const month = dateCurrent.getMonth() + 1;
   const day = dateCurrent.getDay();
-  console.log(`ano /${year} do mes /${month} dia/${day}`);
+  console.table(`ano /${year} do mes /${month} dia/${day}`);
 
   const [dateView, setDataView] = useState({
     year,
     month,
   });
 
-  const anterior = async (state) => {
+  const anterior = async () => {
     if (dateView.month === 1) {
       setDataView({
         year: dateView.year - 1,
@@ -33,7 +33,7 @@ const Home = () => {
     }
   };
 
-  const Proximo = async (state) => {
+  const Proximo = async () => {
     if (dateView.month === 12) {
       setDataView({
         year: dateView.year + 1,
