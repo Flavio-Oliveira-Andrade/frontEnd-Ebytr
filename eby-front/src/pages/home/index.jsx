@@ -1,94 +1,100 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-import {Container, ContentTitle,Title, BtnSucces,BtnAction,BtnAntProxPrim,Table,
-  BtnAntProx, TitleUser} from '../../styles/customAdm'
+import {
+  Container, ContentTitle, Title, BtnSucces, BtnAction, BtnAntProxPrim, Table,
+  BtnAntProx, TitleUser,
+} from '../../styles/customAdm';
 
 const Home = () => {
+  const [data, setData] = useState([]);
 
-  const [data, setData] = useState([])
-
-  let dateCurrent = new Date();
+  const dateCurrent = new Date();
   const year = dateCurrent.getFullYear();
-  const month = dateCurrent.getMonth()+1
-  const day = dateCurrent.getDay()
+  const month = dateCurrent.getMonth() + 1;
+  const day = dateCurrent.getDay();
   console.log(`ano /${year} do mes /${month} dia/${day}`);
 
-  const [dateView, setDataView ] = useState({
+  const [dateView, setDataView] = useState({
     year,
     month,
-  })
+  });
 
   const anterior = async (state) => {
-    if(dateView.month === 1) {
+    if (dateView.month === 1) {
       setDataView({
-        year: dateView.year-1,
-        month: 12
-      })
-    }else{
+        year: dateView.year - 1,
+        month: 12,
+      });
+    } else {
       setDataView({
         year: dateView.year,
         month: dateView.month - 1,
-      })
+      });
     }
-
-  }
+  };
 
   const Proximo = async (state) => {
-    if(dateView.month === 12) {
+    if (dateView.month === 12) {
       setDataView({
-        year: dateView.year+1,
-        month: 1
-      })
-    }else{
+        year: dateView.year + 1,
+        month: 1,
+      });
+    } else {
       setDataView({
         year: dateView.year,
-        month: dateView.month  + 1,
-      })
+        month: dateView.month + 1,
+      });
     }
-  }
-  const listarNotas = async (data) => {
-    let notas = [
+  };
+  const listarNotas = async () => {
+    const notas = [
       {
-        "id":1,
-        "notas": "escovar os dentes",
-        "date":"07/11/2021"
+        id: 1,
+        notas: 'escovar os dentes',
+        date: '07/11/2021',
       },
       {
-        "id":2,
-        "notas": "estdar os conteudos",
-        "date":"07/11/2021"
+        id: 2,
+        notas: 'estdar os conteudos',
+        date: '07/11/2021',
       },
       {
-        "id":3,
-        "notas": "escovar os cabelos",
-        "date":"07/11/2021"
+        id: 3,
+        notas: 'escovar os cabelos',
+        date: '07/11/2021',
       },
       {
-        "id":4,
-        "notas": "escovar os cabelos do cachorro",
-        "date":"07/11/2021"
+        id: 4,
+        notas: 'escovar os cabelos do cachorro',
+        date: '07/11/2021',
       },
     ];
-    setData(notas)
-  }
+    setData(notas);
+  };
 
-  useEffect(()=>{
-    listarNotas()
-  },[])
+  useEffect(() => {
+    listarNotas();
+  }, []);
 
-  return(
+  return (
     <Container>
       <ContentTitle>
-      <Title>Listar Notas</Title>
-      <TitleUser>Notas do Flavio</TitleUser>
-      <BtnAction>
-      <BtnSucces>Cadastrar</BtnSucces>
-      </BtnAction>
+        <Title>Listar Notas</Title>
+        <TitleUser>Notas do Flavio</TitleUser>
+        <BtnAction>
+          <BtnSucces>Cadastrar</BtnSucces>
+        </BtnAction>
       </ContentTitle>
       <BtnAntProx>
-      <BtnAntProxPrim onClick={()=> anterior()}>Anterior</BtnAntProxPrim>
-      <span>{dateView.year} / {dateView.month <10 ? "0"+dateView.month:dateView.month }</span>
-      <BtnAntProxPrim onClick={()=> Proximo()}>Proximo</BtnAntProxPrim>
+        <BtnAntProxPrim onClick={() => anterior()}>Anterior</BtnAntProxPrim>
+        <span>
+          {dateView.year}
+          {' '}
+          /
+          {' '}
+          {dateView.month < 10 ? `0${dateView.month}` : dateView.month }
+        </span>
+        <BtnAntProxPrim onClick={() => Proximo()}>Proximo</BtnAntProxPrim>
       </BtnAntProx>
 
       <Table>
@@ -100,7 +106,7 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map(nota => (
+          {data.map((nota) => (
             <tr key={nota.id}>
               <td>{nota.id}</td>
               <td>{nota.notas}</td>
@@ -110,7 +116,7 @@ const Home = () => {
         </tbody>
       </Table>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
