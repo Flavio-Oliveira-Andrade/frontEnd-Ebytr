@@ -96,14 +96,23 @@ const Home = () => {
             <th>Id</th>
             <th>Notas</th>
             <th>Data</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           { !data  ? <p>Loading...</p> : data.map((nota, index) => (
-            <tr key={index}>
+            <tr key={nota._id}>
               <td>{nota._id}</td>
               <td>{nota.task}</td>
               <td>{nota.date}</td>
+              <td>{nota.status}</td>
+              <td>
+                <Link to="/editar">
+                  <button>Editar</button>
+                </Link>
+                <button>Apagar</button>
+                 </td>
             </tr>
           ))}
         </tbody>

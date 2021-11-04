@@ -3,17 +3,11 @@ import { Link } from 'react-router-dom';
 
 import api from '../../functions/apiFunction'
 
-const Cadastrar = () => {
-
-  const dateCurrent = new Date();
-  const year = dateCurrent.getFullYear();
-  const month = dateCurrent.getMonth() + 1;
-  const day = dateCurrent.getDay();
-  const fulldate =`${day}/${month}/${year}`;
+const Editar = () => {
 
   const [taskAdd, setTaskAdd ] = useState({
     task:'',
-    date:fulldate
+    status:'',
   })
 
   const valueTask = (e) => {
@@ -25,7 +19,7 @@ const Cadastrar = () => {
   const cadastrar = async (e) => {
     e.preventDefault()
 
-    await api.post("http://localhost:65335/task/",taskAdd)
+    await api.put("http://localhost:65335/task/",taskAdd)
       .then((response) => {
         console.log(response)
       }).catch((err) => {
@@ -35,17 +29,25 @@ const Cadastrar = () => {
 
   return(
   <div>
-    <h1>Cadastrar</h1>
+    <h1>Editar</h1>
     <Link to="/">
       <button type="submit">Home</button>
     </Link>
-    <form onSubmit={cadastrar}>
-      <label>task: </label>
+    <form onSubmit={Editar}>
+      <label>task
       <input type="text" name="task" placeholder="nota" onChange={valueTask}/>
-      <button type="submit">cadastrar</button>
+      </label>
+      <label>
+        <select name="select">
+          <option value="Pedente">Pedente</option>
+          <option value="Andamento" >Andamento</option>
+          <option value="Concluido">Concluido</option>
+        </select>
+      </label>status
+      <button type="submit">Editar</button>
     </form>
   </div>
   );
 }
 
-export default Cadastrar;
+export default Editar;
