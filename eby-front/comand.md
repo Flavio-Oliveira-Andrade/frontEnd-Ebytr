@@ -6,3 +6,4 @@ npm install --save styled-components
 npm install eslint --save-dev
 npx eslint --init
 npm audit fix --force
+npm install axios

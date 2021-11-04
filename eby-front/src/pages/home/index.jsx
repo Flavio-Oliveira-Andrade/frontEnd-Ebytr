@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../../functions/apiFunction'
 
 import {
   Container, ContentTitle, Title, BtnSucces, BtnAction, BtnAntProxPrim, Table,
@@ -8,6 +9,7 @@ import {
 
 const Home = () => {
   const [data, setData] = useState([]);
+  console.log(data);
 
   const dateCurrent = new Date();
   const year = dateCurrent.getFullYear();
@@ -48,29 +50,17 @@ const Home = () => {
     }
   };
   const listarNotas = async () => {
-    const notas = [
-      {
-        id: 1,
-        notas: 'escovar os dentes',
-        date: '07/11/2021',
-      },
-      {
-        id: 2,
-        notas: 'estdar os conteudos',
-        date: '07/11/2021',
-      },
-      {
-        id: 3,
-        notas: 'escovar os cabelos',
-        date: '07/11/2021',
-      },
-      {
-        id: 4,
-        notas: 'escovar os cabelos do cachorro',
-        date: '07/11/2021',
-      },
-    ];
-    setData(notas);
+
+    await api.get('http://localhost:65335/task/')
+      .then((response) => {
+        console.log(response)
+        setData(response.data);
+      }).catch((err) => {
+        console.log(err)
+      })
+
+
+
   };
 
   useEffect(() => {
@@ -109,10 +99,10 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((nota) => (
-            <tr key={nota.id}>
-              <td>{nota.id}</td>
-              <td>{nota.notas}</td>
+          { !data  ? <p>Loading...</p> : data.map((nota, index) => (
+            <tr key={index}>
+              <td>{nota._id}</td>
+              <td>{nota.task}</td>
               <td>{nota.date}</td>
             </tr>
           ))}
