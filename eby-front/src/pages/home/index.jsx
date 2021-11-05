@@ -4,7 +4,7 @@ import api from '../../functions/apiFunction'
 
 import {
   Container, ContentTitle, Title, BtnSucces, BtnAction, BtnAntProxPrim, Table,
-  BtnAntProx, TitleUser,
+  BtnAntProx, TitleUser,BtnActtionEdit, BtnActtionDel,
 } from '../../styles/customAdm';
 
 const Home = () => {
@@ -109,10 +109,10 @@ const Home = () => {
               <td>{nota.status}</td>
               <td>
                 <Link to={"/editar/"+nota._id}>
-                  <button>Editar</button>
-                </Link>
+                  <BtnActtionEdit>Editar</BtnActtionEdit>
+                </Link>{" "}
                 <Link to={"/delete/"+nota._id}>
-                <button>Apagar</button>
+                <BtnActtionDel>Apagar</BtnActtionDel>
                 </Link>
                  </td>
             </tr>

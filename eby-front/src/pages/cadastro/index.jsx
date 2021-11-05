@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
+import {
+  Container, ContentTitle, Title, BtnSucces, BtnAction, BtnAntProxPrim, Table,
+  BtnAntProx, TitleUser,BtnActtionEdit, BtnActtionDel,
+} from '../../styles/customAdm';
+
 import api from '../../functions/apiFunction'
 
 const Cadastrar = () => {
@@ -36,17 +41,22 @@ const Cadastrar = () => {
   }
 
   return(
-  <div>
-    <h1>Cadastrar</h1>
-    <Link to="/">
-      <button type="submit">Home</button>
-    </Link>
+  <Container>
+    <ContentTitle>
+        <Title>Cadastrar</Title>
+        <TitleUser>Notas do Flavio</TitleUser>
+        <BtnAction>
+          <Link to="/">
+            <BtnSucces>Home</BtnSucces>
+          </Link>
+        </BtnAction>
+      </ContentTitle>
     <form onSubmit={cadastrar}>
       <label>task: </label>
       <input type="text" name="task" placeholder="nota" onChange={valueTask}/>
       <button type="submit">cadastrar</button>
     </form>
-  </div>
+  </Container>
   );
 }
 
