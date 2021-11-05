@@ -47,7 +47,7 @@ const Cadastrar = () => {
         <TitleUser>Notas do Flavio</TitleUser>
         <BtnAction>
           <Link to="/">
-            <BtnSucces>Home</BtnSucces>
+            <BtnSucces>Home </BtnSucces>
           </Link>
         </BtnAction>
       </ContentTitle>
