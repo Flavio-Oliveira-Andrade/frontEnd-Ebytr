@@ -95,7 +95,7 @@ const Home = () => {
           <tr>
             <th>Id</th>
             <th>Notas</th>
-            <th>Data</th>
+            <th>Date</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -105,13 +105,15 @@ const Home = () => {
             <tr key={nota._id}>
               <td>{nota._id}</td>
               <td>{nota.task}</td>
-              <td>{nota.date}</td>
+              <td>{nota.date }</td>
               <td>{nota.status}</td>
               <td>
-                <Link to="/editar">
+                <Link to={"/editar/"+nota._id}>
                   <button>Editar</button>
                 </Link>
+                <Link to={"/delete/"+nota._id}>
                 <button>Apagar</button>
+                </Link>
                  </td>
             </tr>
           ))}

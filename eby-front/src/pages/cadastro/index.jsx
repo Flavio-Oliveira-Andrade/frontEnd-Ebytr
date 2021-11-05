@@ -8,8 +8,10 @@ const Cadastrar = () => {
   const dateCurrent = new Date();
   const year = dateCurrent.getFullYear();
   const month = dateCurrent.getMonth() + 1;
+  let monthh = month < 10 ? '0' + month : month;
   const day = dateCurrent.getDay();
-  const fulldate =`${day}/${month}/${year}`;
+  let dayy = day < 10 ? '0' + day : day;
+  const fulldate =`${dayy}/${monthh}/${year}`;
 
   const [taskAdd, setTaskAdd ] = useState({
     task:'',
